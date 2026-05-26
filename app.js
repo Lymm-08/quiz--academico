@@ -27,10 +27,12 @@ app.use("/js", express.static(path.join(process.cwd(), "public/js")));
 // // Rotas
 
 app.use("/api/users", userRoutes);
- app.use("/", pageRoutes);
-app.use("/", pontuacaoRoutes);
-app.use("/", rankingRoutes);
-app.use("/quiz", quizRoutes);
+ app.use("/api/pages", pageRoutes);
+
+ app.use("/api/quiz", quizRoutes);
+app.use("/api/pontuacao", pontuacaoRoutes);
+app.use("/api/ranking", rankingRoutes);
+
 // porta
 
 const PORT = process.env.PORT || 3000;

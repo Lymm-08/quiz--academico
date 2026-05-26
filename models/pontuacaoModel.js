@@ -1,30 +1,38 @@
-export function calcularPontuacao(respostas) {
+
+export async function calcularPontuacao(respostas) {
 
     let acertos = 0;
     let pontuacao = 0;
 
-    respostas.forEach((resposta) => {
+    for (const resposta of respostas) {
 
-        if (resposta.correta) {
+        const alternativa =
+            await buscarAlternativa(
+                resposta.idAlternativa
+            );
+
+        if (alternativa.correta) {
 
             acertos++;
 
-            if (resposta.nivel === "facil") {
+            if (alternativa.nivel === "facil") {
                 pontuacao += 1;
             }
 
-            if (resposta.nivel === "medio") {
+            if (alternativa.nivel === "medio") {
                 pontuacao += 3;
             }
 
-            if (resposta.nivel === "dificil") {
+            if (alternativa.nivel === "dificil") {
                 pontuacao += 5;
             }
         }
-    });
+    }
 
     return {
         acertos,
         pontuacao
     };
 }
+
+export default router;

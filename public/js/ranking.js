@@ -1,24 +1,39 @@
-async function carregarRanking() {
 
-    const response =
-        await fetch("/ranking");
+async function showRanking() {
 
-    const ranking =
-        await response.json();
+    resultScreen.style.display = "none";
 
-    const lista =
-        document.getElementById("ranking");
+    rankingScreen.style.display = "block";
 
-    ranking.forEach((usuario) => {
+    rankingTabela.innerHTML = "";
 
-        lista.innerHTML += `
-            <li>
-                ${usuario.posicao}°
-                ${usuario.nome}
-                - ${usuario.pontuacao}
-            </li>
-        `;
-    });
+    try {
+
+        const response =
+            await fetch("/api/ranking/ranking");
+
+        const ranking =
+            await response.json();
+
+        ranking.forEach((usuario) => {
+
+            rankingTabela.innerHTML += `
+
+                <tr>
+
+                    <td>${usuario.posicao}</td>
+
+                    <td>${usuario.nome}</td>
+
+                    <td>${usuario.pontuacao}</td>
+
+                </tr>
+            `;
+        });
+
+    } catch (error) {
+
+        console.log(error);
+    }
 }
 
-carregarRanking();

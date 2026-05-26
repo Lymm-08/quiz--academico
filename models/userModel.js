@@ -29,3 +29,4 @@ export async function atualizarSenha(email, novaSenha) {
 
   return result;
 }
+

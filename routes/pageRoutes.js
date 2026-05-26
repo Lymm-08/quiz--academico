@@ -28,4 +28,9 @@ router.get("/trocarSenha", (req, res) => {
   res.sendFile(path.join(process.cwd(), "trocarSenha.html"));
 });
 
+// Trocar senha
+router.get("/quiz", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "quiz.html"));
+});
+
 export default router;

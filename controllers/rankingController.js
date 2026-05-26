@@ -1,3 +1,4 @@
+
 import {
     buscarRanking,
     salvarPontuacao
@@ -62,3 +63,4 @@ export async function postPontuacao(req, res) {
         });
     }
 }
+export default router;
