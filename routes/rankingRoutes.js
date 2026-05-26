@@ -1,21 +1,15 @@
+
 import express from "express";
 
 import {
     getRanking,
     postPontuacao
-}
-from "../controllers/rankingController.js";
+} from "../controllers/rankingController.js";
 
 const router = express.Router();
 
-router.get(
-    "/ranking",
-    getRanking
-);
+router.get("/", getRanking);
 
-router.post(
-    "/pontuacao",
-    postPontuacao
-);
+router.post("/pontuacao", postPontuacao);
 
 export default router;

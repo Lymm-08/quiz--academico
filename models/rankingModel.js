@@ -1,3 +1,4 @@
+
 import { pool } from "../config/database.js";
 
 export async function buscarRanking() {
@@ -5,9 +6,9 @@ export async function buscarRanking() {
     const [rows] = await pool.query(`
         SELECT
             nome,
-            pontos
-        FROM usuarios
-        ORDER BY pontos DESC
+            pontuacao
+        FROM usuario
+        ORDER BY pontuacao DESC
         LIMIT 10
     `);
 
@@ -15,13 +16,15 @@ export async function buscarRanking() {
 }
 
 export async function salvarPontuacao(
-    nome,
+    idUsuario,
     pontos
 ) {
 
     await pool.query(`
-        UPDATE usuarios
-        SET pontos = pontos + ?
-        WHERE nome = ?
-    `, [pontos, nome]);
+        UPDATE usuario
+        SET pontuacao = pontuacao + ?
+        WHERE id = ?
+    `, [pontos, idUsuario]);
 }
+
+export default router;

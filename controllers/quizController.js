@@ -1,3 +1,4 @@
+
 import { buscarPerguntasPorDisciplina } from "../models/quizModel.js";
 
 export async function getPerguntas(req, res) {
@@ -19,4 +20,7 @@ export async function getPerguntas(req, res) {
             erro: "Erro ao buscar perguntas"
         });
     }
+
 }
+
+export default router;
