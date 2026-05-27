@@ -1,16 +1,34 @@
+const resultScreen =
+    document.getElementById(
+        "resultScreen"
+    );
+
+const rankingScreen =
+    document.getElementById(
+        "rankingScreen"
+    );
+
+const rankingTabela =
+    document.getElementById(
+        "rankingTabela"
+    );
 
 async function showRanking() {
 
-    resultScreen.style.display = "none";
+    resultScreen.style.display =
+        "none";
 
-    rankingScreen.style.display = "block";
+    rankingScreen.style.display =
+        "block";
 
     rankingTabela.innerHTML = "";
 
     try {
 
         const response =
-            await fetch("/api/ranking/ranking");
+            await fetch(
+                "/api/ranking/ranking"
+            );
 
         const ranking =
             await response.json();
@@ -28,6 +46,7 @@ async function showRanking() {
                     <td>${usuario.pontuacao}</td>
 
                 </tr>
+
             `;
         });
 
@@ -36,4 +55,3 @@ async function showRanking() {
         console.log(error);
     }
 }
-

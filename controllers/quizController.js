@@ -1,14 +1,16 @@
-
-import { buscarPerguntasPorDisciplina } from "../models/quizModel.js";
+import {
+    buscarPerguntasPorDisciplina
+}
+from "../models/quizModel.js";
 
 export async function getPerguntas(req, res) {
 
     try {
 
-        const { disciplina } = req.params;
+        const { id } = req.params;
 
         const perguntas =
-            await buscarPerguntasPorDisciplina(disciplina);
+            await buscarPerguntasPorDisciplina(id);
 
         res.status(200).json(perguntas);
 
@@ -20,7 +22,4 @@ export async function getPerguntas(req, res) {
             erro: "Erro ao buscar perguntas"
         });
     }
-
 }
-
-export default router;

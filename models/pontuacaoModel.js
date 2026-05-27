@@ -35,4 +35,3 @@ export async function calcularPontuacao(respostas) {
     };
 }
 
-export default router;

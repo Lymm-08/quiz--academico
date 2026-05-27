@@ -18,7 +18,7 @@ export async function getRanking(req, res) {
                 return {
                     posicao: index + 1,
                     nome: usuario.nome,
-                    pontuacao: usuario.pontos
+                    pontuacao: usuario.pontuacao
                 };
             });
 
@@ -63,4 +63,3 @@ export async function postPontuacao(req, res) {
         });
     }
 }
-export default router;

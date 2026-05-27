@@ -21,4 +21,3 @@ export async function responderQuiz(req, res) {
         });
     }
 }
-export default router;
