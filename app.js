@@ -24,6 +24,11 @@ app.use("/css", express.static(path.join(process.cwd(), "css")));
 app.use("/imgs", express.static(path.join(process.cwd(), "public/imgs")));
 app.use("/js", express.static(path.join(process.cwd(), "public/js")));
 
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "views", "quiz.html"));
+});
+
 // // Rotas
 
 app.use("/api/users", userRoutes);
