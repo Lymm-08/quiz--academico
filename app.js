@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 // // Rotas
 
 app.use("/api/users", userRoutes);
- app.use("/api/pages", pageRoutes);
+ app.use("/", pageRoutes);
 
  app.use("/api/quiz", quizRoutes);
 app.use("/api/pontuacao", pontuacaoRoutes);
@@ -56,6 +56,7 @@ pool.getConnection()
 
   next();
     });
+
 
     app.listen(PORT, () => {
       console.log(`Servidor rodando em http://localhost:${PORT}`);

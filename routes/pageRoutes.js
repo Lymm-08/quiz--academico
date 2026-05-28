@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import { buscarUsuarioPorEmail } from "../models/userModel.js";
 
 const router = express.Router();
 
@@ -9,28 +10,73 @@ router.get("/", (req, res) => {
 });
 
 // Login
-router.get("/login", (req, res) => {
+router.get("/login.html", (req, res) => {
   res.sendFile(path.join(process.cwd(), "login.html"));
 });
 
 // Cadastro
-router.get("/cadastro", (req, res) => {
+router.get("./../views/cadastro", (req, res) => {
   res.sendFile(path.join(process.cwd(), "cadastro.html"));
 });
 
 // Redefinir senha
-router.get("/redefinir", (req, res) => {
+router.get("./../views/redefinir.htmL", (req, res) => {
   res.sendFile(path.join(process.cwd(), "redefinir.html"));
 });
 
 // Trocar senha
-router.get("/trocarSenha", (req, res) => {
+router.get("./../views/trocarSenha.html", (req, res) => {
   res.sendFile(path.join(process.cwd(), "trocarSenha.html"));
 });
 
 // Trocar senha
 router.get("/quiz", (req, res) => {
   res.sendFile(path.join(process.cwd(), "quiz.html"));
+});
+
+router.post("/login", async (req, res) => {
+
+    console.log("LOGIN ACIONADO");
+
+  try {
+
+    console.log("BODY:", req.body);
+
+    const { email, senha } = req.body;
+
+    console.log("EMAIL:", email);
+    console.log("SENHA:", senha);
+
+    // procura usuário
+    const usuario = 
+      await buscarUsuarioPorEmail(email);
+
+      console.log("USUARIO:", usuario)
+
+    // se não encontrar
+    if (!usuario || usuario.senha !==senha) {
+
+      return res.status(401).json({
+        success: false,
+        message: "Email ou senha inválidos"
+      });
+
+    }
+
+    // login OK
+    return res.status(200).json({
+      success: true
+    });
+
+  } catch (erro) {
+
+    console.log(erro);
+
+    return res.status(500).json({
+      success: false,
+      message: "Erro no servidor"
+    });
+  }
 });
 
 export default router;
