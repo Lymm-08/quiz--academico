@@ -1694,6 +1694,31 @@ INSERT INTO alternativa (id_questao, perguntas, correta) VALUES
 
 -- Stored Procedures --
 DELIMITER / /
+
+
+CREATE PROCEDURE CadastrarUsuario(
+    IN p_nome VARCHAR(100),
+    IN p_email VARCHAR(100),
+    IN p_senha VARCHAR(255)
+)
+BEGIN
+    DECLARE v_existe INT;
+
+    SELECT COUNT(*) INTO v_existe
+    FROM usuario
+    WHERE email = p_email;
+
+    IF v_existe > 0 THEN
+        SELECT 'Email já cadastrado!' AS mensagem;
+
+    ELSE
+        INSERT INTO usuario(nome, email, senha, pontuacao)
+        VALUES (p_nome, p_email, p_senha, 0);
+
+        SELECT 'Usuário cadastrado com sucesso!' AS mensagem;
+    END IF;
+
+END;
 CREATE PROCEDURE AtualizarQuiz(IN p_id INT, IN p_pontuacao INT) BEGIN
 UPDATE
     quiz
@@ -1825,6 +1850,5 @@ FROM
     usuario
 ORDER BY
     pontuacao DESC;
-END / / DELIMITER / /
+END // DELIMITER //
 
---comentando
