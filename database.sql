@@ -1718,8 +1718,12 @@ BEGIN
         SELECT 'Usuário cadastrado com sucesso!' AS mensagem;
     END IF;
 
+<<<<<<< HEAD
 END;
 CREATE PROCEDURE AtualizarQuiz(IN p_id INT, IN p_pontuacao INT) BEGIN
+=======
+END // CREATE PROCEDURE AtualizarQuiz(IN p_id INT, IN p_pontuacao INT) BEGIN
+>>>>>>> c0607db55e7dbd834adc1598f39bd9bf73d46c7b
 UPDATE
     quiz
 SET

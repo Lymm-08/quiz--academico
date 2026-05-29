@@ -49,14 +49,6 @@
                     Entrar
                 </button>
 
-                <div class="divider">Ou continue com</div>
-
-                <div class="social">
-                    <button class="btn2" id="googleLogin">
-                        Google
-                    </button>
-                </div>
-
                 <div class="divider">
                     Não possui uma conta?
                 </div>
@@ -69,8 +61,6 @@
         </div>
 
     </div>
-
-    <script type="module" src="./../services/auth.js"></script>
 
     <script>
 
@@ -125,23 +115,25 @@
 
 
                 // LOGIN CORRETO
-                if (dados.mensagem) {
+                if (dados.success) {
 
                     alert("Login realizado com sucesso!");
 
                     window.location.href =
-                        "home.html";
+                        "quiz.html";
 
                 }
 
                 // LOGIN ERRADO
                 else {
 
-                    alert("Email ou senha incorretos!");
+                    alert("Sua senha ou email estão incorretos.");
 
                 }
 
             }
+
+            
 
             // ERRO SERVIDOR
             catch (erro) {

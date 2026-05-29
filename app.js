@@ -24,10 +24,15 @@ app.use("/css", express.static(path.join(process.cwd(), "css")));
 app.use("/imgs", express.static(path.join(process.cwd(), "public/imgs")));
 app.use("/js", express.static(path.join(process.cwd(), "public/js")));
 
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "views", "quiz.html"));
+});
+
 // // Rotas
 
 app.use("/api/users", userRoutes);
- app.use("/api/pages", pageRoutes);
+ app.use("/", pageRoutes);
 
  app.use("/api/quiz", quizRoutes);
 app.use("/api/pontuacao", pontuacaoRoutes);
@@ -51,6 +56,7 @@ pool.getConnection()
 
   next();
     });
+
 
     app.listen(PORT, () => {
       console.log(`Servidor rodando em http://localhost:${PORT}`);

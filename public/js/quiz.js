@@ -1,4 +1,3 @@
-
 let perguntas = [];
 
 let perguntaAtual = 0;
@@ -30,8 +29,6 @@ async function carregarPerguntas() {
 
         perguntas =
             organizarPerguntas(dados);
-
-        mostrarPergunta();
 
     } catch (error) {
 
@@ -79,6 +76,24 @@ function organizarPerguntas(dados) {
     });
 
     return Object.values(perguntasMap);
+}
+
+
+// ===============================
+// INICIAR QUIZ
+// ===============================
+
+function startQuiz() {
+
+    document.getElementById(
+        "startScreen"
+    ).style.display = "none";
+
+    document.getElementById(
+        "quizScreen"
+    ).style.display = "block";
+
+    mostrarPergunta();
 }
 
 
@@ -268,8 +283,3 @@ function restartQuiz() {
 // ===============================
 
 carregarPerguntas();
-
-
-
-
-
