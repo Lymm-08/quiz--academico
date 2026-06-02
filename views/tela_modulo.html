@@ -48,14 +48,13 @@
   </div>
 
   <script>
-    // Liga os cartões para navegar para a rota do módulo.
-    // Mantive IDs e data-attributes para integrar com o backend existente.
+    // Liga os cartões para navegar para o quiz com o módulo selecionado
     document.querySelectorAll('.module-card').forEach(card => {
       card.addEventListener('click', () => {
-        const id = card.getAttribute('data-module-id');
+        const moduloId = card.getAttribute('data-module-id');
 
-        // ajustar a rota abaixo conforme o padrão do backend se necessário.
-        window.location.href = `/modulo/${id}`;
+        // Redireciona para quiz.html passando o módulo como parâmetro
+        window.location.href = `/quiz.html?modulo=${moduloId}`;
       });
     });
 
