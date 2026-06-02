@@ -48,13 +48,13 @@
   </div>
 
   <script>
-    // Liga os cartões para navegar para o quiz com o módulo selecionado
+    // Liga os cartões para navegar para a tela de disciplinas
     document.querySelectorAll('.module-card').forEach(card => {
       card.addEventListener('click', () => {
         const moduloId = card.getAttribute('data-module-id');
 
-        // Redireciona para quiz.html passando o módulo como parâmetro
-        window.location.href = `/quiz.html?modulo=${moduloId}`;
+// Redireciona para a rota de disciplinas do módulo selecionado
+    window.location.href = `/modulo/disciplinas/${moduloId}`;
       });
     });
 
